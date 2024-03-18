@@ -1,5 +1,6 @@
 from typing import Any
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import (View,TemplateView,
                                   ListView,DetailView,
                                   CreateView,UpdateView,
@@ -42,5 +43,9 @@ class SchoolCreateView(CreateView):
 class SchoolUpdateView(UpdateView):
     fields= '__all__'
     model=models.School
+    
+class SchoolDeleteView(DeleteView):
+    model=models.School
+    success_url=reverse_lazy('udemy_cbvs:list')
 
 
